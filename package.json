@@ -1,0 +1,19 @@
+{
+  "name": "spreadsheet",
+  "version": "0.0.0",
+  "description": "Spreadsheet webapp built with TypeScript and CSS Grid",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dpfeil/spreadsheet.git"
+  },
+  "author": "dpfeil@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dpfeil/spreadsheet/issues"
+  },
+  "homepage": "https://github.com/dpfeil/spreadsheet#readme"
+}
