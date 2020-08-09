@@ -4,7 +4,7 @@ import Cell from './Cell';
 const defaults = {
   width: 5,
   height: 5,
-  cellWidth: "60px",
+  cellWidth: "100px",
   cellHeight: "30px",
 }
 
@@ -74,7 +74,7 @@ class Spreadsheet {
     const cells = Object.assign({},this.cells);
     for(let i = 0; i < this.height; i++) {
       for(let j = 0; j < this.width; j++) {
-        const id = `${this.getLetter(j)}${i}`;
+        const id = `${this.getLetter(j)}${i + 1}`;
         if(!(id in this.cells)) {
           const value = "";
           const cell = new Cell(id,value,this.getCellValue);
