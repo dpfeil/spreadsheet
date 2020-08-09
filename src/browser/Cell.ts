@@ -15,7 +15,7 @@ class Cell {
     input.addEventListener("keydown", this.onKeyDown);
     input.addEventListener("focus", this.onFocus);
     input.addEventListener("blur", this.onBlur);
-    input.value = this.value;
+    input.value = this.evaluate();
     cell.appendChild(input);
     return cell;
   }
