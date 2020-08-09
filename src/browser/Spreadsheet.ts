@@ -78,6 +78,10 @@ class Spreadsheet {
         if(!(id in this.cells)) {
           const value = "";
           const cell = new Cell(id,value,this.getCellValue);
+          if(i === 0)
+            cell.setTop(this.getLetter(j));
+          if(j === 0)
+            cell.setSide(i+1);
           cells[id] = cell;
         }
       }

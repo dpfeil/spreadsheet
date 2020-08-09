@@ -3,6 +3,9 @@ class Cell {
   id: string;
   value: string = "";
   getCellValue: any = null;
+  classNames = ["cell"];
+  column: string = "";
+  row: number = 0;
   constructor(id: string, value: string = "", getCellValue: any) {
     this.id = id;
     this.value = value;
@@ -11,7 +14,9 @@ class Cell {
 
   getHTMLElement = (): HTMLElement => {
     var cell = document.createElement("div");
-    cell.className = "cell";
+    cell.className = this.classNames.join(" ");
+    cell.setAttribute("data-row",this.row.toString());
+    cell.setAttribute("data-column",this.column.toString().toUpperCase());
     cell.id = this.id;
     var input = document.createElement("input");
     input.addEventListener("keydown", this.onKeyDown);
@@ -66,6 +71,15 @@ class Cell {
       return eval(expression);
     }
     return this.value;
+  }
+
+  setTop = (val: string) => {
+    this.classNames.push("top");
+    this.column = val;
+  }
+  setSide = (val: number) => {
+    this.classNames.push("side");
+    this.row = val;
   }
 
 }

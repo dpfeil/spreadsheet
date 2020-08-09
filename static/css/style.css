@@ -1,4 +1,19 @@
+body {
+  margin: 0px;
+  font-family: arial;
+}
+
+.section-content {
+  margin: 10px;
+}
+
+.button {
+  margin-right: 8px;
+  padding: 5px;
+}
+
 .spreadsheet {
+  margin: 50px;
   display: grid;
   grid-template-columns: 100px 100px 100px 100px 100px;
   grid-template-rows: 30px 30px 30px 30px 30px;
@@ -6,6 +21,7 @@
 }
 
 .cell {
+  position: relative;
   justify-self: stretch;
 }
 
@@ -13,4 +29,35 @@
   box-sizing: border-box;
   width: 100%;
   height: 100%;
+}
+
+.cell.top::before {
+  position: absolute;
+  top: -30px;
+  padding-top: 8px;
+  color: rgb(95,95,95);
+  font-size: 13px;
+  content: attr(data-column);
+  width: 100%;
+  height: 30px;
+  text-align: center;
+  background-color: #ececec;
+  border: 1px solid #cdcdcd;
+  box-sizing: border-box
+}
+
+.cell.side::after {
+  position: absolute;
+  left: -40px;
+  color: rgb(95,95,95);
+  font-size: 13px;
+  padding-top: 8px;
+  padding-left: 5px;
+  width: 40px;
+  height: 30px;
+  content: attr(data-row);
+  text-align: left;
+  background-color: #ececec;
+  border: 1px solid #cdcdcd;
+  box-sizing: border-box;
 }
