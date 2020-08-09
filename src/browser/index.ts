@@ -1,7 +1,8 @@
 import Spreadsheet from './Spreadsheet';
 
 
-const addButton = (name: string, text: string, fn: any): void => {
+
+const addButton = (name: string, text: string, fn: EventHandlerNonNull): void => {
   var button = document.createElement("button");
   button.id = name;
   button.innerHTML = text;

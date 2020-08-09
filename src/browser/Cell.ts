@@ -22,19 +22,21 @@ class Cell {
     return cell;
   }
 
-  onFocus = (e: any) => {
-    e.target.value = this.value;
-    e.target.setSelectionRange(0, this.value.length);
+  onFocus = (e: FocusEvent) => {
+    const target = <HTMLInputElement> e.target;
+    target.value = this.value;
+    target.setSelectionRange(0, this.value.length);
   }
 
-  onKeyDown = (e: any) => {
-    const val = e.target.value;
+  onKeyDown = (e: KeyboardEvent) => {
+    const target = <HTMLInputElement> e.target;
+    const val = target.value;
     if(e.keyCode === 13) { // enter
       this.value = val;
-      e.target.blur();
+      target.blur();
     } else if(e.keyCode === 27) { // escape
-      e.target.value = this.value;
-      e.target.blur();
+      target.value = this.value;
+      target.blur();
     } else if(e.which === 9) { // tab (moves focus to next cell)
       e.preventDefault();
       e.stopPropagation();
@@ -42,8 +44,9 @@ class Cell {
     }
   }
 
-  onBlur = (e: any) => {
-    e.target.value = this.evaluate();
+  onBlur = (e: FocusEvent) => {
+    const target = <HTMLInputElement> e.target;
+    target.value = this.evaluate();
   }
 
 

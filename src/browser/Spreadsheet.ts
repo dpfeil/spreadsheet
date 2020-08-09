@@ -25,7 +25,7 @@ const createGrid = (count: number, value: string) : string => {
 
 
 
-const sortCells = (a:string,b:string) : number => {
+const sortCells = (a: string, b: string) : number => {
   const anum = a.match(/[0-9]+/gi);
   const aRow = (anum !== null ? anum[0] : -1)
   const bnum = b.match(/[0-9]+/gi);
@@ -65,12 +65,12 @@ class Spreadsheet {
     return (base > 0 ? String.fromCharCode(96 + base) : "") + String.fromCharCode(97 + rem);
   }
 
-  getCellValue = (key: string) : any => {
+  getCellValue = (key: string): string => {
     return this.cells[key.toLowerCase()].evaluate();
   }
 
 
-  getCells = () => {
+  getCells = (): void => {
     const cells = Object.assign({},this.cells);
     for(let i = 0; i < this.height; i++) {
       for(let j = 0; j < this.width; j++) {
@@ -85,7 +85,7 @@ class Spreadsheet {
     this.cells = cells;
   }
 
-  onCellBlur = () => {
+  onCellBlur = (): void => {
     this.drawCells();
   }
 
@@ -116,11 +116,6 @@ class Spreadsheet {
     this.getCells();
     this.drawCells();
   }
-  
-
-
-  
-
 
 }
 
