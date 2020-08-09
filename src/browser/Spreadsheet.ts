@@ -54,7 +54,7 @@ class Spreadsheet {
   width: number;
   height: number;
   cells: Values<Cell> = {};
-  constructor(width: number = 5, height: number = 5) {
+  constructor(width: number = defaults.width, height: number = defaults.height) {
     this.width = width;
     this.height = height
   }
