@@ -1,0 +1,10 @@
+.spreadsheet {
+  display: grid;
+  grid-template-columns: 60px 60px 60px 60px 60px;
+  grid-template-rows: 30px 30px 30px 30px 30px;
+  grid-auto-flow: row;
+}
+
+.cell {
+  justify-self: stretch;
+}
