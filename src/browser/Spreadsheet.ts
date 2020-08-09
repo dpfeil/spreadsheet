@@ -65,6 +65,10 @@ class Spreadsheet {
     return (base > 0 ? String.fromCharCode(96 + base) : "") + String.fromCharCode(97 + rem);
   }
 
+  getCellValue = (key: string) : any => {
+    return this.cells[key.toLowerCase()].evaluate();
+  }
+
 
   getCells = () => {
     const cells = Object.assign({},this.cells);
@@ -73,12 +77,16 @@ class Spreadsheet {
         const id = `${this.getLetter(j)}${i}`;
         if(!(id in this.cells)) {
           const value = "";
-          const cell = new Cell(id,value);
+          const cell = new Cell(id,value,this.getCellValue);
           cells[id] = cell;
         }
       }
     }
     this.cells = cells;
+  }
+
+  onCellBlur = () => {
+    this.drawCells();
   }
 
   drawCells = (): void => {
@@ -88,7 +96,9 @@ class Spreadsheet {
     removeAllChildNodes(ss);
     const sortedKeys = Object.keys(this.cells).sort(sortCells);
     for(let k = 0; k < sortedKeys.length; k++) {
-      ss.appendChild(this.cells[sortedKeys[k]].getHTMLElement());
+      const cellElement = this.cells[sortedKeys[k]].getHTMLElement();
+      cellElement.firstChild?.addEventListener("blur",this.onCellBlur);
+      ss.appendChild(cellElement);
     }
   }
 

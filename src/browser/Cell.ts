@@ -2,9 +2,11 @@
 class Cell {
   id: string;
   value: string = "";
-  constructor(id: string, value: string = "") {
+  getCellValue: any = null;
+  constructor(id: string, value: string = "", getCellValue: any) {
     this.id = id;
     this.value = value;
+    this.getCellValue = getCellValue;
   }
 
   getHTMLElement = (): HTMLElement => {
@@ -48,6 +50,16 @@ class Cell {
   evaluate = () : string => {
     if(this.value.trim()[0] === "=") {
       let expression = this.value.replace("=","");
+      
+      // Cell reference support
+      var cvars = expression.match(/([a-z]+[0-9]+)(?=[\s\*\+\-\/\%]|$)/gi);
+      if(cvars != null) {
+        for(let k = 0; k < cvars.length; k++) {
+          const val = this.getCellValue(cvars[k]);
+          expression = expression.replace(new RegExp(cvars[k],"gi"),val);
+        }
+      }
+
       return eval(expression);
     }
     return this.value;
