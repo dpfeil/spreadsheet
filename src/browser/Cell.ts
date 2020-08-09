@@ -19,6 +19,7 @@ class Cell {
     cell.setAttribute("data-column",this.column.toString().toUpperCase());
     cell.id = this.id;
     var input = document.createElement("input");
+    input.setAttribute("tabindex", "-1");
     input.addEventListener("keydown", this.onKeyDown);
     input.addEventListener("focus", this.onFocus);
     input.addEventListener("blur", this.onBlur);
@@ -45,7 +46,7 @@ class Cell {
     } else if(e.which === 9) { // tab (moves focus to next cell)
       e.preventDefault();
       e.stopPropagation();
-      (<HTMLElement>document.getElementById(this.id)?.nextElementSibling?.firstChild).focus()
+      (<HTMLElement>document.getElementById(this.id)?.nextElementSibling?.getElementsByTagName('input')[0]).focus()
     }
   }
 
