@@ -41,7 +41,16 @@ class Cell {
   }
 
   onBlur = (e: any) => {
+    e.target.value = this.evaluate();
+  }
 
+
+  evaluate = () : string => {
+    if(this.value.trim()[0] === "=") {
+      let expression = this.value.replace("=","");
+      return eval(expression);
+    }
+    return this.value;
   }
 
 }
