@@ -1,6 +1,6 @@
 {
   "name": "spreadsheet",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Spreadsheet webapp built with TypeScript and CSS Grid",
   "main": "index.js",
   "scripts": {
