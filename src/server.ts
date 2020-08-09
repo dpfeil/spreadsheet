@@ -4,7 +4,7 @@ import fs from 'fs';
 const port = process.env.PORT || "3000";
 const app = express();
 
-app.use('/js',express.static(__dirname + '/../static/js'));
+app.use('/js',express.static(__dirname + '/../dist/browser'));
 app.use('/css',express.static(__dirname + '/../static/css'));
 
 const index = fs.readFileSync(`${__dirname}/../static/index.html`);
